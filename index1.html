@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You 💙</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .active { display: flex; }
+    h1 {
+      font-size: 3rem;
+      color: #0077cc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background: #0077cc;
+      color: white;
+      cursor: pointer;
+    }
+    img {
+      max-width: 300px;
+      border-radius: 15px;
+      margin: 10px 0;
+    }
+    .paper {
+      background: #fff url("https://www.transparenttextures.com/patterns/lined-paper.png");
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 600px;
+      text-align: left;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .mu {
+      background: linear-gradient(to right, #e41b17, #1d3f90);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Musik -->
+  <audio id="bg-music" autoplay loop>
+    <source src="about-you.mp3" type="audio/mp3">
+  </audio>
+  <audio id="mu-music" loop>
+    <source src="manutd.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Slide 0 (Intro) -->
+  <div class="slide active" id="slide0">
+    <h1>✨ Welcome ✨</h1>
+    <p>a small gift for your birthday</p>
+    <button onclick="nextSlide()">Mulai</button>
+  </div>
+
+  <!-- Slide 1 -->
+  <div class="slide" id="slide1">
+    <h2>Halloooo Adittt</h2>
+    <p>There's Something For You....</p>
+    <button onclick="nextSlide()">tab me please</button>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide" id="slide2">
+    <img src="foto1.jpg" alt="Foto 1">
+    <p>🎂 Happy Birthday Adithya 🎂</p>
+    <p>you get more amazing every year. Happy Birthday, Love</p>
+    <button onclick="nextSlide()">ada lagi dit</button>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide" id="slide3">
+    <img src="foto2.jpg" alt="Foto 2">
+    <p>You deserve all the love in the world today and always. Happy Birthday, my bf💖</p>
+    <p>you're already the birthday boy, did you have to be this good-looking too? not fair..</p>
+    <button onclick="nextSlide()">lagi dit</button>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide" id="slide4">
+    <img src="foto3.jpg" alt="Foto 3">
+    <p>i swear every time we take photo together, i end up liking you even more..</p>
+    <p>Happy Birthday once again, sayang💖</p>
+    <button onclick="nextSlide()">ini juga dit</button>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slide" id="slide5">
+    <div class="paper" id="typed-text"></div>
+    <button onclick="nextSlide()">end..</button>
+  </div>
+
+  <!-- Slide 6 -->
+  <div class="slide" id="slide6">
+    <h1 class="mu">Glory Glory Man United!!!!</h1>
+    <h1 class="mu">HAPPY B'DAY CINTA MATI EMYU ❤️💙</h1>
+    <p>SEMOGA CINTA & SETIAMU KE AKU, SEBESAR CINTA & SETIAMU KE EMYU! ⚽</p>
+    <p>HAHAHAHAHAHAHAHAHAHAHAHAHAHAHA</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    let currentSlide = 0;
+
+    function nextSlide() {
+      document.getElementById("slide" + currentSlide).classList.remove("active");
+      currentSlide++;
+      document.getElementById("slide" + currentSlide).classList.add("active");
+
+      // Confetti tiap ganti slide
+      confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+
+      // Kalau masuk slide teks panjang, mulai ketik
+      if (currentSlide === 5) typeText();
+
+      // Kalau masuk slide MU, stop lagu awal & play lagu MU
+      if (currentSlide === 6) {
+        document.getElementById("bg-music").pause();
+        document.getElementById("mu-music").play();
+      }
+    }
+
+    // Efek ngetik di teks panjang
+    const message = "it's your special day, wish u all the bestt. Selamat 18 tahun sayang. Selamat merayakan tanggal yang sama untuk yang ke-18 kali. Selamat berkembang dan bertumbuh menjadi lebih baik, sayang. Semoga hal baik selalu mengiringi setiap langkahmu, semoga seisi semesta senantiasa berpihak padamu, semoga jalanmu untuk mencapai masa depan yang cerah dipermudah selalu. Teruslah melangkah & bahagia adit. Selamat berkelana di dunia yang keras ini, adit. Semoga segala doa baik yang dilangitkan terkabul, jangan pernah tinggalin Tuhan yaa. Semoga aku tetap jadi orang yang kau pilih dari banyaknya pasang mata yang kau temui di setiap tempat. I will always support u from afar, adit<3. LOVEE YOUU MOREE SAYANGGGG, SELAMATT ULANGG TAHUNN UNTUKK YANGG KESEKIANN KALINYAAA SAYANGG";
+    let i = 0;
+    function typeText() {
+      if (i < message.length) {
+        document.getElementById("typed-text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeText, 50);
+      }
+    }
+  </script>
+</body>
+</html>
